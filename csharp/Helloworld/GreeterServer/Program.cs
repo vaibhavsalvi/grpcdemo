@@ -26,11 +26,17 @@ namespace GreeterServer
         {
             return Task.FromResult(new HelloReply { Message = "Hello " + request.Name });
         }
+
+        // Server side handler of the SayHello RPC
+        public override Task<HelloReply> SayBye(HelloRequest request, ServerCallContext context)
+        {
+            return Task.FromResult(new HelloReply { Message = "Bye " + request.Name });
+        }
     }
 
     class Program
     {
-        const int Port = 30051;
+        const int Port = 20051;
 
         public static void Main(string[] args)
         {
